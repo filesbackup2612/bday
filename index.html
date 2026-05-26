@@ -84,32 +84,20 @@ body{
 /* ---------------- STARS ---------------- */
 
 .stars{
-
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
-
   z-index:-1;
-
 }
 
 .star{
-
   position:absolute;
-
   width:3px;
   height:3px;
-
   background:white;
-
   border-radius:50%;
-
   opacity:.8;
-
   animation:twinkle 3s infinite ease-in-out;
-
 }
 
 @keyframes twinkle{
@@ -137,7 +125,6 @@ body{
   right:10px;
 
   display:flex;
-
   gap:6px;
 
   z-index:99999;
@@ -164,7 +151,6 @@ body{
   display:block;
 
   width:0%;
-
   height:100%;
 
   background:white;
@@ -251,7 +237,10 @@ h1{
 
 }
 
-#startBtn{
+/* ---------------- BUTTON ---------------- */
+
+#startBtn,
+.btn{
 
   padding:16px 40px;
 
@@ -290,7 +279,6 @@ h1{
 .music-player button{
 
   border:none;
-
   background:none;
 
   color:white;
@@ -301,7 +289,7 @@ h1{
 
 }
 
-/* ---------------- SECTIONS ---------------- */
+/* ---------------- RESPONSIVE SECTIONS ---------------- */
 
 section{
 
@@ -321,8 +309,7 @@ section{
 
   opacity:0;
 
-  transform:
-  scale(.95);
+  transform:scale(.95);
 
   transition:
   opacity .7s ease,
@@ -330,14 +317,15 @@ section{
 
   pointer-events:none;
 
+  overflow-y:auto;
+
 }
 
 section.active{
 
   opacity:1;
 
-  transform:
-  scale(1);
+  transform:scale(1);
 
   pointer-events:auto;
 
@@ -366,12 +354,14 @@ section.active{
 
   border-radius:40px;
 
-  padding:35px;
+  padding:clamp(20px,4vw,35px);
 
   overflow:hidden;
 
   box-shadow:
   0 20px 60px rgba(201,141,213,.25);
+
+  margin:auto;
 
 }
 
@@ -441,25 +431,74 @@ p{
 
 }
 
-/* ---------------- BUTTON ---------------- */
+/* ---------------- CHAT ---------------- */
 
-.btn{
+.chat-box{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:12px;
 
   margin-top:25px;
 
-  padding:15px 34px;
+}
 
-  border:none;
+.msg{
 
-  border-radius:50px;
+  padding:14px 18px;
 
-  background:white;
+  border-radius:22px;
 
-  color:#ff5d8f;
+  max-width:88%;
 
-  font-weight:700;
+  word-wrap:break-word;
 
-  cursor:pointer;
+  overflow-wrap:break-word;
+
+  font-size:1rem;
+
+  line-height:1.5;
+
+}
+
+.me{
+
+  align-self:flex-end;
+
+  background:
+  linear-gradient(
+  135deg,
+  #ff8fab,
+  #ff5d8f
+  );
+
+}
+
+.them{
+
+  align-self:flex-start;
+
+  background:
+  rgba(255,255,255,.15);
+
+}
+
+.quote{
+
+  display:block;
+
+  font-size:.9rem;
+
+  opacity:.75;
+
+  margin-bottom:10px;
+
+  padding-left:12px;
+
+  border-left:
+  4px solid #d38cff;
 
 }
 
@@ -486,75 +525,6 @@ p{
   object-fit:contain;
 
   border-radius:25px;
-
-}
-
-/* ---------------- CHAT ---------------- */
-
-.chat-box{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:15px;
-
-  margin-top:25px;
-
-}
-
-.msg{
-
-  padding:15px 20px;
-
-  border-radius:22px;
-
-  max-width:80%;
-
-}
-/* WHATSAPP STYLE QUOTES */
-
-.quoted{
-
-  position:relative;
-
-}
-
-.quote{
-
-  display:block;
-
-  font-size:.9rem;
-
-  opacity:.75;
-
-  margin-bottom:10px;
-
-  padding-left:12px;
-
-  border-left:
-  4px solid #d38cff;
-
-}
-.me{
-
-  align-self:flex-end;
-
-  background:
-  linear-gradient(
-  135deg,
-  #ff8fab,
-  #ff5d8f
-  );
-
-}
-
-.them{
-
-  align-self:flex-start;
-
-  background:
-  rgba(255,255,255,.15);
 
 }
 
@@ -610,6 +580,7 @@ p{
 }
 
 /* ---------------- MODAL ---------------- */
+/* ---------------- FINAL MODAL ---------------- */
 
 .surprise-modal{
 
@@ -655,91 +626,154 @@ p{
 
   border-radius:35px;
 
-  overflow:auto;
+  overflow:hidden;
 
-  width:min(92vw,520px);
+  width:min(92vw,430px);
 
   max-height:90vh;
 
   position:relative;
 
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.18);
+
+  text-align:center;
+
 }
+
+/* IMAGE */
 
 .surprise-box img{
 
   width:100%;
 
-  height:auto;
+  height:420px;
 
-  max-height:65vh;
-
-  object-fit:contain;
+  object-fit:cover;
 
   display:block;
 
-  background:#fff;
-
 }
+
+/* TITLE */
 
 .surprise-box h2{
 
-  padding:25px 20px 10px;
+  padding:28px 24px 14px;
 
   color:#ff5d8f;
 
+  font-size:2.7rem;
+
+  line-height:1.2;
+
 }
+
+/* TEXT */
 
 .surprise-box p{
 
-  padding:0 20px 30px;
+  padding:0 24px 35px;
 
   color:#444;
 
+  font-size:1.15rem;
+
+  line-height:1.8;
+
 }
+
+/* CLOSE BUTTON */
 
 #closeModal{
 
   position:absolute;
 
-  top:20px;
+  top:12px;
 
-  right:25px;
+  right:18px;
 
-  font-size:2rem;
+  width:42px;
+  height:42px;
 
-  cursor:pointer;
+  border-radius:50%;
+
+  background:
+  rgba(0,0,0,.45);
 
   color:white;
 
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  font-size:1.5rem;
+
+  cursor:pointer;
+
+  z-index:10;
+
+  backdrop-filter:blur(10px);
+
 }
 
-/* ---------------- MOBILE ---------------- */
+/* MOBILE */
 
 @media(max-width:768px){
 
-  h1{
-    font-size:3rem;
+  .surprise-box{
+
+    width:95vw;
+
   }
 
-  h2{
+  .surprise-box img{
+
+    height:340px;
+
+  }
+
+  .surprise-box h2{
+
     font-size:2rem;
+
   }
 
-  p{
+  .surprise-box p{
+
     font-size:1rem;
+
   }
 
-  #typing{
-    font-size:1.5rem;
-  }
+}
+.music-player button{
 
-  .content{
-    padding:25px;
-  }
+  width:48px;
+  height:48px;
 
-  .memory-card img{
-    height:250px;
-  }
+  border:none;
+
+  border-radius:50%;
+
+  background:
+  rgba(255,255,255,.18);
+
+  backdrop-filter:blur(12px);
+
+  color:white;
+
+  font-size:1.3rem;
+
+  cursor:pointer;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  box-shadow:
+  0 8px 20px rgba(0,0,0,.15);
 
 }
 
@@ -758,14 +792,11 @@ p{
 
 <!-- STORY PROGRESS -->
 <div class="story-progress">
-
   <div><span></span></div>
   <div><span></span></div>
   <div><span></span></div>
   <div><span></span></div>
   <div><span></span></div>
-  <div><span></span></div>
-
 </div>
 
 <!-- SPLASH -->
@@ -774,18 +805,18 @@ p{
   <h1 id="typing"></h1>
 
   <button id="startBtn">
-    Open Birthday Surprise 🍭
+    Open Surprise 💖
   </button>
 
 </div>
 
 <!-- MUSIC -->
 <audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="music-player">
-  <button id="musicToggle">🎵</button>
+  <button id="musicToggle">🔊</button>
 </div>
 
 <!-- SECTION 1 -->
@@ -796,12 +827,11 @@ p{
     <div class="sparkle sparkle1">✨</div>
     <div class="sparkle sparkle2">🎉</div>
 
-
     <h1>Happy Birthday ✨</h1>
 
     <p>
       Today is all about celebrating you,
-      your smile and every beautiful memory.
+      and our beautiful memories.
     </p>
 
   </div>
@@ -816,9 +846,7 @@ p{
     <h2>2024 ❤️</h2>
 
     <div class="memory-card">
-
       <img src="Copilot_20260526_123930.png">
-
     </div>
 
     <p style="margin-top:20px;">
@@ -854,21 +882,22 @@ p{
         Speech ippudu isthaventi 😭
       </div>
 
-      <div class="msg me">
-        Nuvvu paduko mundhu
-      </div>
-
       <div class="msg them">
         Asale nuvvu costliest frnd
       </div>
 
-      <div class="msg me quoted">
+      <div class="msg me">
 
         <span class="quote">
           Asale nuvvu costliest frnd
         </span>
 
-        Nee yebba 😭
+        Nee yebba 
+
+      </div>
+
+      <div class="msg me">
+        Nuvvu paduko mundhu
       </div>
 
     </div>
@@ -886,12 +915,13 @@ p{
 
     <div class="letter">
 
-      Dear Love,<br><br>
+      Chinnuuuuuu,<br><br>
 
-      Thank you for every smile,
-      every laugh and every memory.
-      I hope this birthday becomes
-      as beautiful as you are ❤️<br><br>
+      Thank you for coming into my life
+      when I least expected it
+      and I hope life always stays kind
+      and beautiful to you,
+      just like you are to me ❤️<br><br>
 
       Happy Birthday 🎂✨
 
@@ -906,10 +936,10 @@ p{
 
   <div class="content">
 
-    <h1>Happy Birthday Beautiful ✨</h1>
+    <h1>Happy Birthday Raa ✨</h1>
 
     <p>
-      Made with love ❤️
+      Hope your bdays always include me ❤️
     </p>
 
     <button class="btn" onclick="openModal()">
@@ -929,7 +959,7 @@ p{
 
     <img src="Copilot_20260526_115841.png">
 
-    <h2>You Are My Favorite Person ❤️</h2>
+    <h2>My Favorite Person 💖</h2>
 
     <p>
       No matter what happens,
@@ -945,7 +975,7 @@ p{
 /* TYPEWRITER */
 
 const text =
-"Hey ❤️ I made something sweet for you...";
+"Hey ❤️ Something sweet for you...";
 
 let i = 0;
 
@@ -971,21 +1001,38 @@ typing();
 const music =
 document.getElementById("music");
 
-document.getElementById("musicToggle")
-.addEventListener("click",()=>{
+const musicBtn =
+document.getElementById("musicToggle");
 
-  if(music.paused){
+/* START UNMUTED */
 
-    music.play();
+music.volume = 1;
+
+let muted = false;
+
+/* TOGGLE */
+
+musicBtn.addEventListener("click",(e)=>{
+
+  e.stopPropagation();
+
+  muted = !muted;
+
+  if(muted){
+
+    music.muted = true;
+
+    musicBtn.innerHTML = "🔇";
 
   }else{
 
-    music.pause();
+    music.muted = false;
+
+    musicBtn.innerHTML = "🔊";
 
   }
 
 });
-
 /* SPLASH */
 
 const splash =
